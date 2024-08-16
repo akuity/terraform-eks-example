@@ -1,1 +1,1 @@
-# terraform-eks-example
+# Akuity: Terraform EKS Example
