@@ -47,16 +47,13 @@ resource "akp_instance" "argocd" {
 data "aws_eks_cluster_auth" "this" {
   name = module.eks.cluster_name
 }
-data "aws_eks_cluster" "this" {
-  name = module.eks.cluster_name
-}
 
 resource "akp_cluster" "eks-cluster" {
   instance_id = akp_instance.argocd.id
   kube_config = {
-    host                   = data.aws_eks_cluster.this.endpoint
+    host                   = module.eks.cluster_endpoint
     token                  = data.aws_eks_cluster_auth.this.token
-    cluster_ca_certificate = base64decode(data.aws_eks_cluster.this.certificate_authority[0].data)
+    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   }
   name        = "${module.eks.cluster_name}-${var.environment}"
   namespace   = "akuity"
@@ -81,4 +78,5 @@ resource "akp_cluster" "eks-cluster" {
       kube_config.token,
     ]
   }
+  depends_on = [ module.eks ]
 }
