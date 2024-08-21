@@ -5,9 +5,9 @@ resource "time_sleep" "this" {
   depends_on = [ akp_instance.argocd ]
 }
 
-resource "argocd_application" "bootstrap_addons" {
+resource "argocd_application" "bootstrap" {
   metadata {
-    name      = "addons"
+    name      = "bootstrap"
     namespace = "argocd"
     labels = {
       cluster = "in-cluster"
