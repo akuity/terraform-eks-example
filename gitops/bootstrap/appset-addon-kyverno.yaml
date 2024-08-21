@@ -43,7 +43,7 @@ spec:
             releaseName: 'kyverno'
             ignoreMissingValueFiles: true
             valueFiles:
-            - '$values/clusters/{{.name}}/addons/kyverno.yaml'
+            - '$values/gitops/clusters/{{.name}}/addons/kyverno.yaml'
         
         # Helm valueFiles source.
         - repoURL: 'https://github.com/akuity/terraform-eks-example'

@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: https://github.com/akuity/terraform-eks-example
         targetRevision: HEAD
-        path: 'clusters/{{name}}/apps'
+        path: 'gitops/clusters/{{name}}/apps'
         directory:
           recurse: true
       destination:

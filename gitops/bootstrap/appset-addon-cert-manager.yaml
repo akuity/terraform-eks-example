@@ -43,7 +43,7 @@ spec:
             releaseName: 'cert-manager'
             ignoreMissingValueFiles: true
             valueFiles:
-            - '$values/clusters/{{.name}}/addons/cert-manager.yaml'
+            - '$values/gitops/clusters/{{.name}}/addons/cert-manager.yaml'
         
         # Helm valueFiles source.
         - repoURL: 'https://github.com/akuity/terraform-eks-example'
