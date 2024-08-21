@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
   destination:
     namespace: guestbook
-    name: dev
+    name: akuity-terraform-eks-example-dev
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
