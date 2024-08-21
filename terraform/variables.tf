@@ -52,14 +52,9 @@ variable "addons" {
   description = "Kubernetes addons"
   type        = any
   default = {
-    # aws
-    enable_karpenter         = true
-    enable_aws_ingress_nginx = true # inginx configured with AWS NLB
-    # oss
-    enable_metrics_server   = true
-    enable_kyverno          = true
     enable_cert_manager     = true
     enable_external_secrets = true
+    enable_kyverno          = false
   }
 }
 
@@ -90,7 +85,7 @@ variable "gitops_repo_url" {
 variable "gitops_path" {
   description = "gitops path in repo"
   type        = string
-  default     = "gitops"
+  default     = "gitops/bootstrap"
 }
 
 variable "gitops_target_revision" {

@@ -55,12 +55,12 @@ resource "akp_cluster" "eks-cluster" {
     token                  = data.aws_eks_cluster_auth.this.token
     cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   }
-  name        = "${module.eks.cluster_name}-${var.environment}"
+  name        = "${var.environment}"
   namespace   = "akuity"
-  labels      = merge({ environment = var.environment })
+  labels      = merge({ environment = var.environment }, var.addons)
   annotations = {}
   spec = {
-    description = "${module.eks.cluster_name}-${var.environment} cluster"
+    description = "${module.eks.cluster_name} ${var.environment} cluster"
     data = {
       size = "small"
     }
