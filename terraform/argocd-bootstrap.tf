@@ -1,3 +1,10 @@
+# If the Argo CD instance was created during the apply, the API
+# may not be available yet, resulting in a 503 error.
+resource "time_sleep" "this" {
+  create_duration = "75s"  # Avg time-to-healthy for an instance.
+  depends_on = [ akp_instance.argocd ]
+}
+
 resource "argocd_application" "bootstrap_addons" {
   metadata {
     name      = "addons"
@@ -30,4 +37,6 @@ resource "argocd_application" "bootstrap_addons" {
       }
     }
   }
+
+  depends_on = [ time_sleep.this ]
 }
