@@ -42,6 +42,8 @@ spec:
           helm:
             releaseName: 'cert-manager'
             ignoreMissingValueFiles: true
+            valuesObject:
+              installCRDs: true
             valueFiles:
             - '$values/gitops/clusters/{{.name}}/addons/cert-manager.yaml'
         
